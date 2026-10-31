@@ -1,1 +1,58 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>ORO CLUB</title><script src="https://cdn.tailwindcss.com"></script></head><body class="bg-black text-white"><div class="max-w-md mx-auto p-6 text-center mt-20"><h1 class="text-4xl font-black">ORO <span class="text-yellow-500">CLUB</span></h1><p class="text-zinc-400 mt-2">Tu plataforma VIP ya esta online</p><div class="bg-zinc-900 p-6 rounded-3xl mt-8"><p>Saldo</p><h2 class="text-3xl font-bold text-yellow-500">$12.500</h2><button class="w-full bg-yellow-500 text-black font-bold py-3 rounded-xl mt-4">ENTRAR</button></div></div></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORO CLUB - VIP</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:system-ui,Arial;min-height:100vh;display:flex;justify-content:center;padding:20px}
+.app{width:100%;max-width:400px}
+.header{text-align:center;padding:20px 0;border-bottom:1px solid #222}
+.header h1{color:#d4af37;letter-spacing:4px;font-size:32px}
+.card{background:#111;border:1px solid #222;border-radius:20px;padding:20px;margin-top:20px}
+.card.gold{border-color:#d4af37;background:linear-gradient(145deg,#111,#1a1500)}
+.saldo b{color:#d4af37;font-size:32px;display:block;margin-top:5px}
+.btn{width:100%;background:linear-gradient(90deg,#d4af37,#f9e27d);color:#000;border:none;padding:16px;border-radius:12px;font-weight:800;font-size:16px;margin-top:15px;cursor:pointer}
+.btn-dark{background:#222;color:#d4af37;border:1px solid #d4af37}
+input{width:100%;padding:14px;background:#000;border:1px solid #333;border-radius:10px;color:#fff;margin-top:10px}
+.hide{display:none}
+.task{display:flex;justify-content:space-between;padding:12px;background:#000;border-radius:10px;margin-top:10px;border:1px solid #222}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div id="page-landing">
+<div class="header"><h1>ORO CLUB</h1><p style="color:#666;font-size:12px;margin-top:5px">PLATAFORMA OFICIAL VIP</p></div>
+<div class="card gold"><small>SALDO TOTAL</small><div class="saldo"><b>$12.500 COP</b><span style="color:#0f0;font-size:13px">+ $2.500 hoy</span></div><button class="btn" onclick="show('login')">ENTRAR</button></div>
+<div class="card"><p style="font-size:14px;color:#aaa">✓ 3.847 usuarios activos<br>✓ Retiros a Nequi y Bancolombia<br>✓ Soporte 24/7</p></div>
+</div>
+
+<div id="page-login" class="hide">
+<div class="header"><h1>ORO CLUB</h1></div>
+<div class="card"><h3>Bienvenido de nuevo</h3><input id="user" placeholder="Usuario / Teléfono" value="usuario demo"><input id="pass" type="password" placeholder="Contraseña" value="123456"><button class="btn" onclick="login()">INGRESAR AHORA</button><button class="btn btn-dark" onclick="show('landing')">VOLVER</button></div>
+</div>
+
+<div id="page-dash" class="hide">
+<div class="header"><h1>ORO CLUB</h1><p style="color:#0f0">● Conectado</p></div>
+<div class="card gold"><small>SALDO DISPONIBLE</small><div class="saldo"><b id="saldoTxt">$12.500</b></div><button class="btn" onclick="retirar()">RETIRAR A NEQUI</button></div>
+<div class="card"><h4>Tareas del día</h4><div class="task"><span>Ver 3 anuncios</span><span style="color:#d4af37">+ $800</span></div><div class="task"><span>Invitar 1 amigo</span><span style="color:#d4af37">+ $2.000</span></div><button class="btn btn-dark" onclick="sumar()">COMPLETAR TAREA + $800</button></div>
+<button class="btn btn-dark" onclick="show('landing')">CERRAR SESIÓN</button>
+</div>
+
+</div>
+<script>
+let saldo = 12500;
+function show(id){
+document.getElementById('page-landing').classList.add('hide');
+document.getElementById('page-login').classList.add('hide');
+document.getElementById('page-dash').classList.add('hide');
+document.getElementById('page-'+id).classList.remove('hide');
+}
+function login(){ show('dash'); }
+function sumar(){ saldo+=800; document.getElementById('saldoTxt').innerText='$'+saldo.toLocaleString(); alert('¡Ganaste $800! Nuevo saldo: $'+saldo); }
+function retirar(){ alert('Solicitud de retiro por $'+saldo+' enviada. Llega a tu Nequi en 24 horas.'); }
+</script>
+</body>
+</html>
